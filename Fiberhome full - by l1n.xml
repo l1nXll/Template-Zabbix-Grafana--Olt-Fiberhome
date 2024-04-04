@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>6.0</version>
+    <date>2024-04-04T18:35:36Z</date>
+    <groups>
+        <group>
+            <uuid>fb25638a2d7f4d2c8707e28f716e4e52</uuid>
+            <name>FiberHome</name>
+        </group>
+        <group>
+            <uuid>11621360a65c444fa51f1c7f7f989a2e</uuid>
+            <name>GPON | OLT</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <uuid>aca3aa4a55ac4baa93eaed1b4380e9bb</uuid>
+            <template>Fiberhome full - by l1n</template>
+            <name>Fiberhome full - by l1n</name>
+            <groups>
+                <group>
+                    <name>FiberHome</name>
+                </group>
+                <group>
+                    <name>GPON | OLT</name>
+                </group>
+            </groups>
+            <items>
+                <item>
+                    <uuid>220b7ceec07f431994da6ee3bee765b7</uuid>
+                    <name>CPU</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.4.1.5875.800.3.9.8.1.1.5.9</snmp_oid>
+                    <key>hswa.cpu</key>
+                    <delay>5m</delay>
+                    <history>15d</history>
+                    <trends>70d</trends>
+                    <value_type>FLOAT</value_type>
+                    <units>%</units>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>0.01</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>HSWA Infos</value>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>fd953ab594b2416380b2883bf11b88da</uuid>
+                            <expression>avg(/Fiberhome full - by l1n/hswa.cpu,5m)&gt;60</expression>
+                            <name>CPU elevada</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>314aa41a032040b3a06face348dd9ecd</uuid>
+                    <name>Versão do Hardware</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.5875.800.3.9.4.4.0</snmp_oid>
+                    <key>hswa.had.versao</key>
+                    <delay>1d</delay>
+                    <history>15d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>HSWA Infos</value>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>3f87fbb898a740298ece86bb2952bf22</uuid>
+                            <expression>(last(/Fiberhome full - by l1n/hswa.had.versao,#1)&lt;&gt;last(/Fiberhome full - by l1n/hswa.had.versao,#2))&gt;0</expression>
+                            <name>Versão de hardware modificado</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>e4ff56fecd0644d8b049bc9b6f90ac94</uuid>
+                    <name>Memoria</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.4.1.5875.800.3.9.8.1.1.6.9</snmp_oid>
+                    <key>hswa.mem</key>
+                    <delay>5m</delay>
+                    <history>15d</history>
+                    <trends>70d</trends>
+                    <value_type>FLOAT</value_type>
+                    <units>%</units>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>0.01</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>HSWA Infos</value>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>0222f501c06248ca9b9333a22cd89eca</uuid>
+                            <expression>avg(/Fiberhome full - by l1n/hswa.mem,5m)&gt;75</expression>
+                            <name>Memoria elevada</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>a402519333414177a7209bc53dad46ee</uuid>
+                    <name>Versao do Software</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.5875.800.3.9.4.3.0</snmp_oid>
+                    <key>hswa.soft.versao</key>
+                    <delay>1d</delay>
+                    <history>15d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>HSWA Infos</value>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>8488efe3b156476eb1aa9d22073b710f</uuid>
+                            <expression>(last(/Fiberhome full - by l1n/hswa.soft.versao,#1)&lt;&gt;last(/Fiberhome full - by l1n/hswa.soft.versao,#2))&gt;0</expression>
+                            <name>Versão de software modificado</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>97529cc6709649eba49999686f2f6cf6</uuid>
+                    <name>Temperatura</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.5875.800.3.9.4.5.0</snmp_oid>
+                    <key>hswa.temperatura</key>
+                    <history>15d</history>
+                    <trends>90d</trends>
+                    <units>°C</units>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>HSWA Infos</value>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>4afa2bd6aefe44c39682ab46741789d4</uuid>
+                            <expression>avg(/Fiberhome full - by l1n/hswa.temperatura,5m)&gt;55</expression>
+                            <name>Temperatura elevada</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>56e90a0201ab4dceb91f8d9627a6ca92</uuid>
+                    <name>Uptime</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.2.1.1.3.0</snmp_oid>
+                    <key>hswa.uptime</key>
+                    <delay>5m</delay>
+                    <history>15d</history>
+                    <trends>90d</trends>
+                    <units>uptime</units>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>0.01</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>HSWA Infos</value>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>0456dae57bfa4b1bb78ca208d7a4b817</uuid>
+                            <expression>change(/Fiberhome full - by l1n/hswa.uptime)&lt;0</expression>
+                            <name>Reiniciou</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+            </items>
+            <discovery_rules>
+                <discovery_rule>
+                    <uuid>ea15a73024ac4002a1d5c4db1565c8e6</uuid>
+                    <name>Placas - Info</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>discovery[{#SNMPVALUE},.1.3.6.1.4.1.5875.800.3.9.2.1.1.2]</snmp_oid>
+                    <key>card.info.discovery</key>
+                    <lifetime>60m</lifetime>
+                    <item_prototypes>
+                        <item_prototype>
+                            <uuid>de198a8a98574eb2b46420f5b811455f</uuid>
+                            <name>Slot {#SNMPINDEX} CPU</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.5875.800.3.9.2.1.1.8.{#SNMPINDEX}</snmp_oid>
+                            <key>cpu.util.[{#SNMPINDEX}]</key>
+                            <delay>5m</delay>
+                            <history>15d</history>
+                            <trends>90d</trends>
+                            <value_type>FLOAT</value_type>
+                            <units>%</units>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <parameters>
+                                        <parameter>0.01</parameter>
+                                    </parameters>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>CPU</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>f6cacc9efc9443268463d21940d00f63</uuid>
+                            <name>Slot {#SNMPINDEX} Memoria</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.5875.800.3.9.2.1.1.9.{#SNMPINDEX}</snmp_oid>
+                            <key>memoria.util.[{#SNMPINDEX}]</key>
+                            <delay>5m</delay>
+                            <history>15d</history>
+                            <trends>90d</trends>
+                            <value_type>FLOAT</value_type>
+                            <units>%</units>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <parameters>
+                                        <parameter>0.01</parameter>
+                                    </parameters>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Memoria</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>936f87f9ae0241448be80a38a4933560</uuid>
+                            <name>Slot {#SNMPINDEX} Modelo da placa</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.5875.800.3.9.2.1.1.3.{#SNMPINDEX}</snmp_oid>
+                            <key>modelo.placa.[{#SNMPINDEX}]</key>
+                            <delay>1d</delay>
+                            <trends>0</trends>
+                            <value_type>TEXT</value_type>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Info Placa</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>c62ec299d52447ccac7a2f45981cec09</uuid>
+                            <name>Slot {#SNMPINDEX} N. de portas</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.5875.800.3.9.2.1.1.6.{#SNMPINDEX}</snmp_oid>
+                            <key>num.portas.[{#SNMPINDEX}]</key>
+                            <delay>1d</delay>
+                            <history>15d</history>
+                            <trends>90d</trends>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Info Placa</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>63b0c9163a4442d99c15c0bc0598e29a</uuid>
+                            <name>Slot {#SNMPINDEX} Versao do software da placa</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.5875.800.3.9.2.1.1.4.{#SNMPINDEX}</snmp_oid>
+                            <key>placa.soft.v.[{#SNMPINDEX}]</key>
+                            <delay>1d</delay>
+                            <trends>0</trends>
+                            <value_type>TEXT</value_type>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Info Placa</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>15d6ffc6997e4e258090d01c4ead088c</uuid>
+                            <name>Slot {#SNMPINDEX} Status</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.5875.800.3.9.2.1.1.5.{#SNMPINDEX}</snmp_oid>
+                            <key>status.placa.[{#SNMPINDEX}]</key>
+                            <history>15d</history>
+                            <trends>90d</trends>
+                            <description>1: Conectada
+2: Desconectada</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Status Placa</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>a97469615f334275a2f866a0dca3e82c</uuid>
+                            <name>Slot {#SNMPINDEX} Tipo de placa</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.5875.800.3.9.2.1.1.2.{#SNMPINDEX}</snmp_oid>
+                            <key>tipo.placa.[{#SNMPINDEX}]</key>
+                            <delay>1d</delay>
+                            <history>15d</history>
+                            <trends>90d</trends>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Info Placa</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+                <discovery_rule>
+                    <uuid>1d22fae466a442ea9797dbc10bdb6e67</uuid>
+                    <name>Portas Pon</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>discovery[{#SNMPVALUE},1.3.6.1.4.1.5875.800.3.9.3.4.1.3]</snmp_oid>
+                    <key>pons.info.discovery</key>
+                    <lifetime>60m</lifetime>
+                    <item_prototypes>
+                        <item_prototype>
+                            <uuid>24f32b327d8f442c81f4b84d22c4fe2e</uuid>
+                            <name>{#SNMPVALUE}</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.5875.800.3.9.3.4.1.12.{#SNMPINDEX}</snmp_oid>
+                            <key>oltPonAuthOnuNum.[{#SNMPINDEX}]</key>
+                            <delay>5m</delay>
+                            <history>7d</history>
+                            <trends>90d</trends>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>PONs Clientes</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>43729a624e874d62b6325a385a4c5ab5</uuid>
+                            <name>{#SNMPVALUE}</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>iso.3.6.1.2.1.2.2.1.8.{#SNMPINDEX}</snmp_oid>
+                            <key>pon.status.[{#SNMPINDEX}]</key>
+                            <history>7d</history>
+                            <trends>90d</trends>
+                            <description>Retorna o status da PON:
+
+1 = UP
+2 = Down</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>PONs Info</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+            </discovery_rules>
+        </template>
+    </templates>
+</zabbix_export>
